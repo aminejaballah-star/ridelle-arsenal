@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ridelle Arsenal Bâche</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0E6B8C">
+<link rel="icon" href="icons/icon-192.png">
+<style>
+:root{
+  --bg:#E8ECEF; --panel:#F6F8F9; --ink:#17252E; --muted:#5B6B75; --line:#C5CED4;
+  --accent:#0E6B8C; --accent-ink:#FFFFFF; --warn:#9A4B00; --warn-bg:#FBEBD3;
+  --p209:#9FB4C0; --p210:#6F8C9C; --p211:#41606F; --total:#0E6B8C;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10181D; --panel:#1A252C; --ink:#E6EDF1; --muted:#93A4AF; --line:#32424C;
+    --accent:#4FB3D6; --accent-ink:#06222D; --warn:#F0B56B; --warn-bg:#3A2A12;
+    --p209:#6F8C9C; --p210:#8FA9B8; --p211:#B5C9D4; --total:#4FB3D6;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10181D; --panel:#1A252C; --ink:#E6EDF1; --muted:#93A4AF; --line:#32424C;
+  --accent:#4FB3D6; --accent-ink:#06222D; --warn:#F0B56B; --warn-bg:#3A2A12;
+  --p209:#6F8C9C; --p210:#8FA9B8; --p211:#B5C9D4; --total:#4FB3D6;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:16px;line-height:1.45}
+.wrap{max-width:980px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:1.6rem;font-weight:600;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px}
+h2{font-size:1rem;font-weight:600;margin:0 0 12px}
+label{display:block;font-size:.9rem;color:var(--muted);margin:0 0 4px}
+input,select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:10px 12px;min-height:44px}
+input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.hint{font-size:.85rem;color:var(--muted);margin:4px 0 0}
+.warn{background:var(--warn-bg);color:var(--warn);border-radius:4px;padding:8px 12px;font-size:.9rem;margin-top:8px}
+.stack{display:flex;flex-direction:column-reverse;gap:3px;margin:4px 0 14px}
+.bar{height:26px;border-radius:3px;display:flex;align-items:center;padding:0 10px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.8rem;color:#fff}
+.bar.p209{background:var(--p209);color:#0f1a20}
+.bar.p210{background:var(--p210);color:#0f1a20}
+.bar.p211{background:var(--p211);color:#fff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bar.p211{color:#0f1a20}}
+:root[data-theme="dark"] .bar.p211{color:#0f1a20}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:7px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td:last-child{text-align:right;font-family:"IBM Plex Mono",ui-monospace,monospace;white-space:nowrap}
+td small{display:block;color:var(--muted);font-size:.8rem}
+tr.sum td{font-weight:600;border-bottom:none;padding-top:10px}
+.cost{font-size:1.1rem}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:12px}
+.seg button{font:inherit;min-height:44px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.seg button:first-child{border-radius:4px 0 0 4px}
+.seg button:last-child{border-radius:0 4px 4px 0;border-left:none}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.price{background:var(--accent);color:var(--accent-ink);border-radius:6px;padding:16px;margin-top:16px}
+.price .big{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:2rem;font-weight:500;line-height:1.1}
+.price .l{font-size:.9rem;opacity:.9}
+.price .meta{display:flex;justify-content:space-between;gap:12px;margin-top:10px;font-size:.9rem;flex-wrap:wrap}
+details{margin-top:16px}
+summary{cursor:pointer;font-weight:600;min-height:32px}
+.tarifs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Ridelle Arsenal Bâche</h1>
+  <p class="sub">Saisissez la longueur et la hauteur demandées : le coût apparaît, puis ajoutez votre marge pour obtenir le prix de vente.</p>
+
+  <div class="grid">
+    <section class="panel" aria-labelledby="h-demande">
+      <h2 id="h-demande">Demande du client</h2>
+      <div class="row">
+        <div>
+          <label for="longueur">Longueur (m)</label>
+          <input id="longueur" type="number" inputmode="decimal" step="0.01" min="0.1" value="2.50">
+        </div>
+        <div>
+          <label for="hauteur">Hauteur (cm)</label>
+          <select id="hauteur"></select>
+        </div>
+      </div>
+      <div id="alerte"></div>
+
+      <div id="visuel-titre" class="hint" style="margin-top:12px">Profilés empilés (du bas vers le haut)</div>
+      <div class="stack" id="visuel" aria-hidden="true"></div>
+
+      <h2>Marge</h2>
+      <div class="seg" role="group" aria-label="Type de marge">
+        <button type="button" id="m-pct" aria-pressed="true">En pourcentage</button>
+        <button type="button" id="m-dt" aria-pressed="false">En DT</button>
+      </div>
+      <label for="marge" id="marge-label">Marge (% du coût)</label>
+      <input id="marge" type="number" inputmode="decimal" step="0.5" min="0" value="30">
+
+      <details>
+        <summary>Tarifs et réglages</summary>
+        <div class="tarifs">
+          <div><label for="t209">Profilé 209 (DT HT la barre)</label><input id="t209" type="number" inputmode="decimal" step="0.01" value="223"></div>
+          <div><label for="t210">Profilé 210 (DT HT la barre)</label><input id="t210" type="number" inputmode="decimal" step="0.01" value="255"></div>
+          <div><label for="t211">Profilé 211 (DT HT la barre)</label><input id="t211" type="number" inputmode="decimal" step="0.01" value="312"></div>
+          <div><label for="barre">Longueur de la barre (m)</label><input id="barre" type="number" inputmode="decimal" step="0.01" value="6.60"></div>
+          <div><label for="fermeture">Fermeture (DT HT l'unité)</label><input id="fermeture" type="number" inputmode="decimal" step="0.01" value="35"></div>
+          <div><label for="nbferm">Fermetures par ridelle</label><input id="nbferm" type="number" inputmode="numeric" step="1" value="2"></div>
+          <div><label for="charniere">Charnière (DT HT l'unité)</label><input id="charniere" type="number" inputmode="decimal" step="0.01" value="10"></div>
+          <div><label for="nbchar">Charnières par ridelle</label><input id="nbchar" type="number" inputmode="numeric" step="1" value="4"></div>
+        </div>
+      </details>
+    </section>
+
+    <section class="panel" aria-labelledby="h-cout" aria-live="polite">
+      <h2 id="h-cout">Coût de la ridelle</h2>
+      <table>
+        <tbody id="detail"></tbody>
+      </table>
+
+      <div class="price">
+        <div class="l">Prix de vente HT</div>
+        <div class="big" id="pv">0,00 DT</div>
+        <div class="meta">
+          <span>Coût : <strong id="pc">0,00 DT</strong></span>
+          <span>Marge : <strong id="pm">0,00 DT</strong></span>
+          <span>Taux de marge sur vente : <strong id="pt">0 %</strong></span>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+(function(){
+  var $ = function(id){return document.getElementById(id)};
+  var mode = 'pct';
+
+  // Hauteurs : 40 = 210+211 ; chaque 20 cm de plus = un profilé 209 en plus
+  var hs = $('hauteur');
+  [40,60,80,100,120].forEach(function(h){
+    var o = document.createElement('option');
+    o.value = h; o.textContent = h + ' cm';
+    hs.appendChild(o);
+  });
+  hs.value = 60;
+
+  function num(id){
+    var v = parseFloat(String($(id).value).replace(',', '.'));
+    return isFinite(v) ? v : 0;
+  }
+  function fmt(n){
+    return n.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2}) + ' DT';
+  }
+  function fm(n){
+    return n.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2});
+  }
+
+  function calc(){
+    var L = num('longueur'), H = parseInt(hs.value,10), barre = num('barre');
+    var p209 = num('t209'), p210 = num('t210'), p211 = num('t211');
+    var fe = num('fermeture'), nf = num('nbferm'), ch = num('charniere'), nc = num('nbchar');
+    var alerte = $('alerte'); alerte.innerHTML = '';
+    var detail = $('detail'); detail.innerHTML = '';
+
+    if(!(L > 0) || !(barre > 0)){ 
+      detail.innerHTML = '<tr><td>Saisissez une longueur valide.</td><td></td></tr>';
+      $('pv').textContent = fmt(0); $('pc').textContent = fmt(0); $('pm').textContent = fmt(0); $('pt').textContent = '0 %';
+      return;
+    }
+    if(L > barre){
+      alerte.innerHTML = '<div class="warn">La longueur dépasse la barre de ' + fm(barre) + ' m.</div>';
+      detail.innerHTML = '<tr><td>Longueur impossible avec une barre de ' + fm(barre) + ' m.</td><td></td></tr>';
+      $('pv').textContent = fmt(0); $('pc').textContent = fmt(0); $('pm').textContent = fmt(0); $('pt').textContent = '0 %';
+      return;
+    }
+    if(L < 2.5 || L > 3.3){
+      alerte.innerHTML = '<div class="warn">Longueur hors de la plage habituelle (2,50 m à 3,30 m).</div>';
+    }
+
+    // Nombre de ridelles par barre et longueur comptée au client
+    var parBarre = Math.floor(barre / L + 1e-9);
+    var lcomptee = barre / parBarre;
+    var chute = lcomptee - L;
+
+    var n209 = (H - 40) / 20;
+    var profils = [];
+    if(n209 > 0) profils.push({n:'209', q:n209, bar:p209, cls:'p209'});
+    profils.push({n:'210', q:1, bar:p210, cls:'p210'});
+    profils.push({n:'211', q:1, bar:p211, cls:'p211'});
+
+    var totalProfils = 0;
+    var rows = '';
+    profils.forEach(function(p){
+      var unit = p.bar / parBarre;       // part de barre consommée par une ridelle
+      var cost = unit * p.q;
+      totalProfils += cost;
+      rows += '<tr><td>Profilé ' + p.n + ' × ' + p.q + '<small>' + fm(unit) + ' DT chacun (' + fm(p.bar) + ' ÷ ' + parBarre + ')</small></td><td>' + fm(cost) + '</td></tr>';
+    });
+
+    var tfe = fe * nf, tch = ch * nc;
+    var cout = totalProfils + tfe + tch;
+
+    var info = 'Longueur demandée ' + fm(L) + ' m → comptée ' + fm(lcomptee) + ' m';
+    info += chute > 0.0005 ? ' (chute facturée ' + fm(chute) + ' m)' : ' (aucune chute)';
+    info += ' · ' + parBarre + ' ridelle' + (parBarre>1?'s':'') + ' par barre';
+
+    detail.innerHTML =
+      '<tr><td colspan="2" style="text-align:left;font-family:inherit;white-space:normal;color:var(--muted);font-size:.9rem">' + info + '</td></tr>' +
+      rows +
+      '<tr><td>Sous-total profilés</td><td>' + fm(totalProfils) + '</td></tr>' +
+      '<tr><td>Fermetures × ' + nf + '<small>' + fm(fe) + ' DT chacune</small></td><td>' + fm(tfe) + '</td></tr>' +
+      '<tr><td>Charnières × ' + nc + '<small>' + fm(ch) + ' DT chacune</small></td><td>' + fm(tch) + '</td></tr>' +
+      '<tr class="sum cost"><td>Coût total HT</td><td>' + fm(cout) + ' DT</td></tr>';
+
+    // Marge
+    var m = num('marge');
+    var margeDT = mode === 'pct' ? cout * m / 100 : m;
+    var pv = cout + margeDT;
+    $('pv').textContent = fmt(pv);
+    $('pc').textContent = fmt(cout);
+    $('pm').textContent = fmt(margeDT);
+    $('pt').textContent = (pv > 0 ? (margeDT / pv * 100) : 0).toLocaleString('fr-FR',{maximumFractionDigits:1}) + ' %';
+
+    // Visuel des profilés empilés
+    var v = '';
+    profils.forEach(function(p){
+      for(var i=0;i<p.q;i++){ v += '<div class="bar ' + p.cls + '">' + p.n + ' · 20 cm</div>'; }
+    });
+    // ordre bas -> haut : 211 en bas, 209 au milieu, 210 en haut
+    var order = [];
+    order.push('<div class="bar p211">211 · 20 cm</div>');
+    for(var k=0;k<n209;k++) order.push('<div class="bar p209">209 · 20 cm</div>');
+    order.push('<div class="bar p210">210 · 20 cm</div>');
+    $('visuel').innerHTML = order.join('');
+  }
+
+  function setMode(m){
+    mode = m;
+    $('m-pct').setAttribute('aria-pressed', m==='pct');
+    $('m-dt').setAttribute('aria-pressed', m==='dt');
+    $('marge-label').textContent = m==='pct' ? 'Marge (% du coût)' : 'Marge (DT HT par ridelle)';
+    $('marge').value = m==='pct' ? 30 : 100;
+    calc();
+  }
+  $('m-pct').addEventListener('click', function(){setMode('pct')});
+  $('m-dt').addEventListener('click', function(){setMode('dt')});
+
+  Array.prototype.forEach.call(document.querySelectorAll('input,select'), function(el){
+    el.addEventListener('input', calc);
+    el.addEventListener('change', calc);
+  });
+  calc();
+})();
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}
+</script>
+</body>
+</html>
